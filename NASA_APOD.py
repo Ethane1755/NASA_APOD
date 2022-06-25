@@ -19,7 +19,6 @@ txt=s.get_text()
 l=txt.split('astronomer')
 txt=l[1]
 l1=txt.split('Tomorrow')
-print(l1[0])
 exp=str(l1[0])
 l2=exp.split('.')
 exp=('.'.join(l2[1:]))
@@ -50,7 +49,6 @@ for index, link in enumerate(image_links):
         else:
             link=link[:-1]
             a=1
-            print(RootUrl+link+'.jpg')
             k=RootUrl+link+'.jpg'
     img = requests.get(k)
     with open("images\\"+d+".jpg", "wb") as file:
