@@ -36,21 +36,27 @@ with open(path, 'w') as f:
 
 results=s.find_all("img")
 image_links = [result.get("src") for result in results]
-
+print(image_links)
 for index, link in enumerate(image_links):
     if not os.path.exists("images"):
         os.mkdir("images")
+    l=link
     link=link[:-5]
     a=1
     while a!=0:
         response = requests.get(RootUrl+link+'.jpg')
         if response.status_code == 200:
             a=0
+            k=RootUrl+link+'.jpg'
         else:
             link=link[:-1]
             a=1
-            k=RootUrl+link+'.jpg'
-    img = requests.get(k)
+    m=RootUrl+l
+    print(k,m)
+    if k!='':
+        img = requests.get(k)
+    else:
+        img = requests.get(m)
     with open("images\\"+d+".jpg", "wb") as file:
         file.write(img.content) 
 print('NASA APOD of',today.strftime('%Y/%m/%d'),'done.')
